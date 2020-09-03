@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title Page</title>
+    <link href="./bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="./bootstrap/js/bootstrap.js" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <header>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+
+                    <li><a href="<?php echo  base_url(); ?>/auth/welcome.php">Home</a></li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Project
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+
+                            <li><a href="projects/store">Add Project</a></li>
+                            <li><a href="<?php echo  base_url(); ?>projects/index.php">All Projects</a></li>
+
+                        </ul>
+                    </li>
+<!-- 
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Task
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+
+                            <li><a href="<?php echo  base_url(); ?>tasks/create.php">Add Task</a></li>
+                            <li><a href="<?php echo  base_url(); ?>tasks/index.php">All Tasks</a></li>
+
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">User
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+
+                            <li><a href="<?php echo  base_url(); ?>users/create.php">Add User</a></li>
+                            <li><a href="<?php echo  base_url(); ?>users/index.php">All Users</a></li>
+
+                        </ul>
+                    </li>
+ -->
+                </ul>
+                <ul class="nav navbar-nav navbar-right fa-fa-logout">
+                    <li class="text-right"><a href="<?php echo  base_url(); ?>/auth/logout.php"><i
+                                class="fa fa-sign-out"></i>Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+</head>
+
+<body>
+    <h1 class="text-center">Hello World</h1>
+
+
+</body>
+
+</html>
