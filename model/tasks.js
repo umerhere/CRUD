@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');
+/* const Sequelize = require('sequelize');
 const  db  = require('../database/connection');
 
 module.exports = db.define("tasks", {
@@ -21,3 +21,4 @@ module.exports = db.define("tasks", {
     },
     display_order:  Sequelize.INTEGER
 }); //accessible as we made it global in connection.js
+ */

@@ -7,10 +7,12 @@ const app = express();
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+var todoContoller = require('./controllers/projects');
+var mongoose = require("./database/mongoose");
 //app.use('/projects', express.static('public')) //helps to get to pages in
-const projects = require("./model/projects");
-const tasks = require("./model/tasks");
-const users = require("./model/users");
+//const projects = require("./models/projects");
+//const tasks = require("./model/tasks");
+//const users = require("./model/users");
 const { request, response } = require('express');
 
 /* app.use(function (req, res, next) {
@@ -37,80 +39,12 @@ app.use((req, res, next) => {
 	next();
 });
 
-app.post("/projects", async function (request, response) {
-	const projects_data = await projects.findAll();
-	response.status(200).json(projects_data);
-	//response.render("myfile", { projects_data: projects_data });
-})
+mongoose.establishConnection();
 
-app.get("/test/:id", async function (request, response) {
-	where:
-	{
-		id: request.params.id
-	}
-	console.log("project Based on id: ");
-	response.status(200).json(id);
-})
-
-app.post("/projects/store", async function (request, response) {
-	response.status(200).json(request.body);
-	const project = await projects.create(
-		{
-			name: request.body.name,
-			description: request.body.description,
-			display_order: request.body.display_order
-
-		}).then((record) => {
-			console.log("record created");
-			console.log(record);
-			response.status(200).json(record);
-
-		}).catch((err) => {
-			response.status(400).json(err);
-		});
-})
+todoContoller(app);
 
 
-app.post("/projects/show/:id", async function (request, response) {
-	const show_project = await projects.findOne({
-		where:
-		{
-			id: request.params.id
-		}
-	})
-	console.log("project Based on id: ", show_project);
-	response.status(200).json(show_project);
-})
-
-app.put("/projects/update", async function (request, response) {
-	const edit_project = await projects.update(
-		{
-			name: request.body.name,
-			description: request.body.description,
-			display_order: request.body.display_order
-			//text: request.body.text
-		},
-		{
-			where:
-			{
-				id: request.body.id
-			}
-		}).then(() => response.send("edited Successfully"))
-	console.log("project Based on id: ", edit_project);
-	response.status(200).json(edit_project);
-})
-
-app.delete("/projects/delete/:id", async (request,response) => {
-	await projects.destroy({
-		where: 
-		{
-			id: request.params.id
-		}
-	}).then(()=> response.send("Deleted Successfully"));
-})
-
-
-
+/*
 app.post("/tasks/store", async function (request, response) {
 	response.status(200).json(request.body);
 	const task = await tasks.create(
@@ -131,9 +65,9 @@ app.post("/tasks/store", async function (request, response) {
 		}).catch((err) => {
 			response.status(400).json(err);
 		});
-})
+}) */
 
-app.post("/tasks", async function (request, response) {
+/* app.post("/tasks", async function (request, response) {
 	const tasks_data = await tasks.findAll();
 	response.status(200).json(tasks_data);
 	//response.render("myfile", { tasks_data: tasks_data });
@@ -188,7 +122,7 @@ app.post("/tasks/show/:id", async function (request, response) {
 	response.status(200).json(id);
 })*/
 
-app.post("/users/store", async function (request, response) {
+/*app.post("/users/store", async function (request, response) {
 	response.status(200).json(request.body);
 	const user = await users.create(
 		{
@@ -255,7 +189,7 @@ app.post("/users/show/:id", async function (request, response) {
 	console.log("project Based on id: ", show_user);
 	response.status(200).json(show_user);
 })
-
+ */
 app.listen(3000, function () {
 	console.log("server running");
 })

@@ -2,7 +2,7 @@
 module.exports = async () => {
     console.log("creating projectg");
     
-    const Projects = require("./model/projects");
+    const Projects = require("./models/projects");
 
     const errHandler = err => {
         console.log("Error : ", err);

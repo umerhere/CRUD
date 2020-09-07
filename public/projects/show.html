@@ -1,68 +1,163 @@
+
 <!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Title Page</title>
+        <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="../bootstrap/js/bootstrap.js"></script>
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Title Page</title>
-    <link href="./bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="./bootstrap/js/bootstrap.js" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+        <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'> -->
 
-    <header>
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <ul class="nav navbar-nav">
+        <style type="text/css">
+            .popup-overlay.active{
+                visibility:visible;
+                }
 
-                    <li><a href="<?php echo  base_url(); ?>/auth/welcome.php">Home</a></li>
+            .popup-content.active {
+                visibility:visible;
+                }
+        </style>
+    <body>
 
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Project
-                            <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-
-                            <li><a href="projects/store">Add Project</a></li>
-                            <li><a href="<?php echo  base_url(); ?>projects/index.php">All Projects</a></li>
-
-                        </ul>
-                    </li>
-<!-- 
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Task
-                            <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-
-                            <li><a href="<?php echo  base_url(); ?>tasks/create.php">Add Task</a></li>
-                            <li><a href="<?php echo  base_url(); ?>tasks/index.php">All Tasks</a></li>
-
-                        </ul>
-                    </li>
-
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">User
-                            <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-
-                            <li><a href="<?php echo  base_url(); ?>users/create.php">Add User</a></li>
-                            <li><a href="<?php echo  base_url(); ?>users/index.php">All Users</a></li>
-
-                        </ul>
-                    </li>
- -->
-                </ul>
-                <ul class="nav navbar-nav navbar-right fa-fa-logout">
-                    <li class="text-right"><a href="<?php echo  base_url(); ?>/auth/logout.php"><i
-                                class="fa fa-sign-out"></i>Logout</a></li>
-                </ul>
+        <header>
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <ul class="nav navbar-nav">
+        
+                        <li><a href="#">Home</a></li>
+        
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Project
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+        
+                                <li><a href="store.html">Add Project</a></li>
+                                <li><a href="projects.html">All Projects</a></li>
+                                <li><a href="show.html">Show Project</a></li>
+                                <li><a href="edit.html">Edit Projects</a></li>
+                                <li><a href="delete.html">Delete Projects</a></li>
+        
+                            </ul>
+                        </li>
+        
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right fa-fa-logout">
+                        <li class="text-right"><a href="<?php echo  base_url(); ?>/auth/logout.php"><i
+                                    class="fa fa-sign-out"></i>Logout</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        </head>
+        
+        <div class="container">
+            
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h1>Projects</h1>
+                <pre>Showing records Based on ID</pre>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                    
+                    <button class="btn">Show my Project</button>
+            
+            <span id="output"></span>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th >ID</th>
+                                    <th>Name</th>
+                                    <th>Display Order</th>
+                                    <th>Created At</th>
+                                    <th>Updated At</th>
+                                    <th>Desciption</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="projects_tbl_body"  >
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="popup">
+                        <h1 class="show_data"></h1>
+                    </div>
+                    
+                </div>
             </div>
-        </nav>
-    </header>
-</head>
+            
+        </div>
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
 
-<body>
-    <h1 class="text-center">Hello World</h1>
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <h1> </h1>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" id="modal-button" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 
-</body>
+    </body>
+    <script>
+        $(document).ready(function () {
 
+            $.ajax({
+                type: "post",
+                url: "http://localhost:3000/projects/show/3",
+                success: function/* generator*/(response) {
+                    
+                    
+                    console.log("total record:");
+                    //console.log(response.params.id);
+
+                    console.log("1st record name:" + response.name);
+                    console.log(response.length);
+                    $('#projects_tbl_body').append(`
+                        <tr>
+                            <td class="display_id">`+response._id+`</td>
+                            <td>`+ response.name+`</td>
+                            <td>`+ response.display_order+`</td>
+                            <td>`+ response.createdAt+`</td>
+                            <td>`+ response.updatedAt+`</td>
+                            <td>`+ response.description+`</td>
+                            <td><button id="show_button">Click me</button></td>
+
+                        </tr>
+                        `)
+
+                    $("#modal_button").on("click", function(){
+                        $(".modal-body").text("Current ID: " + val._id)
+
+
+                        $("#show_button").on("click", function(){
+                            $(".popup, .popup-content").fadeIn('slow').addClass("active")
+                            Swal('ID : ')
+                        });
+                    });             
+                }
+                   /* $(".btn").on("click", function() {
+                    //$('#output').html(generator());
+                    });*/
+            });
+        }) 
+        
+    </script>
 </html>

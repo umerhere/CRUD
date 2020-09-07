@@ -68,5 +68,35 @@
 
 
 </body>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: "post",
+                url: "http://localhost:3000/projects/store",
+                success: function/* generator*/(response) {
+
+
+                    console.log("total record:");
+                    //console.log(response.params.id);
+
+                    console.log("1st record name:" + response[0].name);
+
+                    $.each(response, function (index, val) {
+                        $('#projects_tbl_body').append(`
+                                <tr>
+                                    <td>`+ val.id + `</td>
+                                    <td>`+ val.name + `</td>
+                                    <td>`+ val.display_order + `</td>
+                                    <td>`+ val.createdAt + `</td>
+                                    <td>`+ val.updatedAt + `</td>
+                                    <td>`+ val.description + `</td>
+                                </tr>
+                                `);
+                    });
+                }
+            });
+        });
+
+    </script>
 
 </html>

@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');
+/* const Sequelize = require('sequelize');
 const  db  = require('../database/connection');
 
 module.exports = db.define("users", {
@@ -18,3 +18,4 @@ module.exports = db.define("users", {
     phone: Sequelize.STRING,
     image: Sequelize.TEXT
 }); //accessible as we made it global in connection.js
+ */

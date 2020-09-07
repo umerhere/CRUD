@@ -1,4 +1,4 @@
-console.log('hello world!');
+/* console.log('hello world!');
 
 //https://nodejs.org/api/ for apis or build in moduls
 //const fs = require('fs');
@@ -13,4 +13,4 @@ var hero_name=superheroes.random();
 var villain_name=supervillains.random();
 console.log(hero_name);
 console.log(villain_name);
-//=> 'Spider-Ham'
+//=> 'Spider-Ham' */
