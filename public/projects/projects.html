@@ -202,7 +202,7 @@
                                 <td>` + val.description + `</td>
                                 <td><button data-toggle="modal" data-target="#myModal" id="edit" class='btn btn-primary btn-xs btn-project-details' data-project-id="` + val._id + `" onclick="project_details('` + val._id +`')">Edit</button>
                                 </td>
-                                <td><button data-toggle="modal" data-target="#myConfirmModal" class="btn btn-primary btn-xs btn-project-details" data-project-id="` + val._id + `" onclick="project_delete('`+val._id+`')" >Delete</button>
+                                <td><button data-toggle="modal" data-target="#myConfirmModal" class="btn btn-danger btn-xs btn-project-details" data-project-id="` + val._id + `" onclick="project_delete('`+val._id+`')" >Delete</button>
                                 </td>
                             </tr>
                             `) //the ubove btn-project-datails is alternate method for getting ID       
@@ -213,8 +213,7 @@
 
     //alternate method for getting ids
     function project_details(id) { //project_id
-        alert("okay");
-       /*  $.ajax({
+        $.ajax({
             url: 'http://localhost:3000/projects/show/' + id, //project_id
             type: 'post',
             async: false,
@@ -224,7 +223,7 @@
                 $('#form_display_order').val(response.display_order);
                 $('#form_description').val(response.description);
             }
-        }); */
+        });
     }
     function actionToBe() {
         $(document).on("click", "#create", function () {

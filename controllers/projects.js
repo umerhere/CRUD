@@ -67,9 +67,9 @@ module.exports = function (app)
         }
     });
 
-    app.post("/projects/show/:name", async function (req, res) {
-        const show_project = await projects.find({
-                name: req.params.name //not gonna work
+    app.post("/projects/show/:id", async function (req, res) {
+        const show_project = await projects.findById({
+                _id: req.params.id //not gonna work
         })
         console.log("project Based on name: ", show_project);
         res.status(200).json(show_project);
@@ -80,16 +80,26 @@ module.exports = function (app)
      })
 
     app.put("/projects/update", async function (req, res) {
-        const edit_project = await projects.updateOne({ _id: req.body.id },
-            { 
-                $set: 
+        /* console.log("ID to be updated:" + req.body.id); */
+            const edit_project = await projects.updateOne({ _id: req.body.id },
                 {
-                    name: req.body.name,
-                    description: req.body.description,
-                    display_order: req.body.display_order
-                } 
-            }).then(() => res.send("edited Successfully"))
-        res.status(200).json(edit_project);
+                    $set:
+                    {
+                        name: req.body.name,
+                        description: req.body.description,
+                        display_order: req.body.display_order
+                    }
+                }).then(() => res.send("edited Successfully"))
+                res.status(200).json(edit_project);
+
+
+        /* db.projects.updateOne(
+            { "_id": ObjectId("5f5675071e94f42d9ceabb16") },
+            {
+                $set: { name: "ok hogeya", display_order: 15, description: "ID se change kia from shell" }
+            }
+        ) */
+        
     })
 /* 
 app.post("/projects", async function (req, res) {

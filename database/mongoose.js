@@ -11,9 +11,14 @@ mongoose.connection.once('open', function () {
 
 exports.establishConnection = () =>{
     mongoose.connect('mongodb://localhost:27017/project_management_system', {
-        //keepAlive: 1,
+        //keepAlive: 1,  //keepAlive: 1,
+        useNewUrlParser: true,
+        useFindAndModify: false,
+        //useCreateIndex: true,
+
         //useNewUrlPaeser: true,
         useUnifiedTopology: true
+        //useNewUrlPaeser: true
     })
     return mongoose.connection
 }
